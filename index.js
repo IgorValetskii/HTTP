@@ -1,19 +1,3 @@
-const params = {
-    access_key: 'b789446123c59c2315cca1e291e75c57',
-    query: 'Minsk'
-};
-
-// const func = (async load =>{
-//     let promise = await fetch(`http://api.weatherstack.com/current?access_key=${params.access_key}&query=${params.query}`, {method:`GET`});
-//     let result =  await promise.json();
-//     console.log(`Current temparture in ${result.location.name} is ${result.current.temperature}℃`);
-// })();
-// func();
-
-
-
-
-
 
 const req = async load => {
     let promise = await fetch(`./data.json`);
@@ -46,21 +30,55 @@ e.addEventListener("input", req);
 
 const showWeather = async load => {
     let e = document.getElementById('enter-city');
-    let promise = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${e.value}&appid=cffea4225b5b5f791c6da44c597920a2&units=metric&lang=ru`);
+    // let promise = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${e.value}&appid=cffea4225b5b5f791c6da44c597920a2&units=metric&lang=ru`);
+    let promise = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${e.value}&appid=cffea4225b5b5f791c6da44c597920a2&units=metric`);
     let result = await promise.json();
-    console.log(`Current temparture in ${result.name} is ${result.main.temp}°С`);
+    //console.log(`Текущая температура в ${e.value}е ${result.main.temp}°С`);
+
+    console.log(result.list);
+    console.log(result.list[0].dt_txt);
+    result.list.forEach((item,index) => {
+        const newTd = document.createElement('td');
+
+        newTd.innerText = result.list[index].dt_txt;
+        newTd.innerText += ` \n ${result.list[index].main.temp}°С`;
+        newTd.innerHTML += `<img src="http://openweathermap.org/img/wn/${result.list[index].weather[0].icon}.png">`;
+
+        newTd.className ='weather';
+        // const el = document.getElementById('1');
+        // el.append(newTd);
+
+
+        if(index < 8){
+        const el = document.getElementById('1');
+        el.append(newTd);
+        }
+
+        if(index >= 8 && index < 16){
+            const el = document.getElementById('2');
+            el.append(newTd);
+        }
+
+        if(index >= 16 && index < 24){
+            const el = document.getElementById('3');
+            el.append(newTd);
+        }
+
+        if(index >= 24 && index < 32){
+            const el = document.getElementById('4');
+            el.append(newTd);
+        }
+
+        if(index >= 32){
+            const el = document.getElementById('5');
+            el.append(newTd);
+        }
+
+    })
 };
 
 // let c = document.getElementById('show-weather');
 // c.addEventListener("click", showWeather());
-// const req = new XMLHttpRequest();
 
-// req.open('GET',`http://api.weatherstack.com/current?access_key=${params.access_key}&query=${params.query}`,true );
-// req.send();
-// req.responseType ='text';
-// req.onload = function() {
-//     const apiResponse = req.response;
-//     const result = JSON.parse(apiResponse);
-//     console.log(`Current temparture in ${result.location.name} is ${result.current.temperature}℃`);
-// };
+
 
