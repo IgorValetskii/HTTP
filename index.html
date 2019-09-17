@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="style.css" type="text/css">
 </head>
 <body>
+<label for="enter-city">Введите город:</label>
+<input list="city" id="enter-city" name="city-choice" />
+<input type="button" id="show-weather" name="city-weather" value="Show" onclick="showWeather()">
+<datalist id="city">
+
+</datalist>
 <script src="index.js"></script>
 </body>
 </html>
