@@ -13,9 +13,13 @@ const req = async load => {
         return item.name.match(textMatch)
         });
 
+        const el = document.getElementById('city');
+           el.innerHTML ='';
+
         f.forEach(item => {
         let e = document.getElementById('city');
-        e.innerHTML +=`<option value="${item.name}" onclick="showWeather()">`
+        e.innerHTML +=`<option value="${item.name}">`
+
         })
     }
 };
@@ -26,30 +30,21 @@ e.addEventListener("input", req);
 
 
 const showWeather = async load => {
+
     let e = document.getElementById('enter-city');
     let promise = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${e.value}&appid=cffea4225b5b5f791c6da44c597920a2&units=metric`);
     let result = await promise.json();
 
     const el = document.getElementById('1');
-        while (el.firstChild) {
-        el.removeChild(el.firstChild);
-        }
+    el.innerHTML ='';
     const el2 = document.getElementById('2');
-        while (el2.firstChild) {
-        el2.removeChild(el2.firstChild);
-        }
+    el2.innerHTML ='';
     const el3 = document.getElementById('3');
-        while (el3.firstChild) {
-        el3.removeChild(el3.firstChild);
-        }
+    el3.innerHTML ='';
     const el4 = document.getElementById('4');
-        while (el4.firstChild) {
-        el4.removeChild(el4.firstChild);
-    }
+    el4.innerHTML ='';
     const el5 = document.getElementById('5');
-        while (el5.firstChild) {
-        el5.removeChild(el5.firstChild);
-    }
+    el5.innerHTML ='';
 
     result.list.forEach((item,index) => {
         const newTd = document.createElement('td');
