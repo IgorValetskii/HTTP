@@ -32,7 +32,7 @@ e.addEventListener("input", req);
 const showWeather = async load => {
 
     let e = document.getElementById('enter-city');
-    let promise = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${e.value}&appid=cffea4225b5b5f791c6da44c597920a2&units=metric`);
+    let promise = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${e.value}&appid=cffea4225b5b5f791c6da44c597920a2&units=metric&lang=ru`);
     let result = await promise.json();
 
     const el = document.getElementById('1');
