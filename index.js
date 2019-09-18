@@ -31,23 +31,23 @@ const showWeather = async load => {
     let result = await promise.json();
 
     const el = document.getElementById('1');
-    while (el.firstChild) {
+        while (el.firstChild) {
         el.removeChild(el.firstChild);
-    }
+        }
     const el2 = document.getElementById('2');
-    while (el2.firstChild) {
+        while (el2.firstChild) {
         el2.removeChild(el2.firstChild);
-    }
+        }
     const el3 = document.getElementById('3');
-    while (el3.firstChild) {
+        while (el3.firstChild) {
         el3.removeChild(el3.firstChild);
-    }
+        }
     const el4 = document.getElementById('4');
-    while (el4.firstChild) {
+        while (el4.firstChild) {
         el4.removeChild(el4.firstChild);
     }
     const el5 = document.getElementById('5');
-    while (el5.firstChild) {
+        while (el5.firstChild) {
         el5.removeChild(el5.firstChild);
     }
 
